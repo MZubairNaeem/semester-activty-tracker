@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1039732410499",
+    "project_id": "semester-tracker-ddc2d",
+    "storage_bucket": "semester-tracker-ddc2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039732410499:android:38b08335dd72ebf10e33b6",
+        "android_client_info": {
+          "package_name": "com.devzie.semester_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039732410499-pn2giuvkeqm25gv2vnh8uuo8arcfkemd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR-kySB0OvxhVxSO9-WYrMN-AWbyoh_wc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1039732410499-pn2giuvkeqm25gv2vnh8uuo8arcfkemd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
