@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:semester_tracker/resource/colors.dart';
+
+class Heading extends StatelessWidget {
+  String text;
+  FontWeight fontWeight;
+  Heading({Key? key,required this.text, required this.fontWeight}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        text,
+        style: TextStyle(
+            fontWeight: fontWeight,
+            fontSize: 32,
+            color: AppColors().lightText),
+      ),
+    );
+  }
+}

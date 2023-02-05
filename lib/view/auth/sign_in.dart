@@ -1,7 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:semester_tracker/resource/colors.dart';
 import 'package:semester_tracker/resource/strings.dart';
+import 'package:semester_tracker/view/auth/register.dart';
+import 'package:semester_tracker/widget/heading32.dart';
+import 'package:semester_tracker/widget/long_button.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -11,6 +14,10 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+
+  TextEditingController mobileNumberController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,49 +31,28 @@ class _SignInState extends State<SignIn> {
         body: Padding(
           padding: const EdgeInsets.all(30.0),
           child: Column(
-           // mainAxisSize: MainAxisSize.min,
+            // mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 children: [
                   Column(
                     children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          Strings().welcome,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 36,
-                              color: AppColors().lightText),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          Strings().signIn,
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 32,
-                              color: AppColors().lightText),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          Strings().missed,
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 32,
-                              color: AppColors().lightText),
-                        ),
-                      ),
+                      Heading(text: Strings().welcome, fontWeight: FontWeight.bold,),
+                      Heading(text: Strings().signIn,  fontWeight: FontWeight.normal,),
+                      Heading(text: Strings().missed, fontWeight: FontWeight.normal,),
                     ],
                   ),
                   const SizedBox(height: 70),
                   Column(
                     children: [
                       TextField(
+                        keyboardType: TextInputType.phone,
+                        style: TextStyle(color: AppColors().lightText),
+                        cursorColor: AppColors().lightColor,
+                        cursorWidth: 5,
+                        //cursorHeight: 25,
+                        controller: mobileNumberController,
                         decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -75,14 +61,15 @@ class _SignInState extends State<SignIn> {
                               ),
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            focusedErrorBorder: OutlineInputBorder(
+                            focusedErrorBorder: const OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Colors.red,
                                 width: 2.0,
                               ),
                             ),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(10))),
+                            border: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
                             hintText: 'Mobile number',
                             hintStyle: TextStyle(
                                 color: AppColors().lightText, fontSize: 18)),
@@ -91,6 +78,11 @@ class _SignInState extends State<SignIn> {
                         height: 15,
                       ),
                       TextField(
+                        style: TextStyle(color: AppColors().lightText),
+                        cursorColor: AppColors().lightColor,
+                        cursorWidth: 5,
+                        //cursorHeight: 25,
+                        controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
@@ -106,12 +98,24 @@ class _SignInState extends State<SignIn> {
                                 width: 2.0,
                               ),
                             ),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(10))),
+                            border: const OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
                             hintText: 'Password',
-                            hintStyle:
-                                TextStyle(color: AppColors().lightText, fontSize: 18)),
+                            hintStyle: TextStyle(
+                                color: AppColors().lightText, fontSize: 18)),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0,right: 10.0),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Text('Forget Password',style: TextStyle(
+                            color: AppColors().lightText,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold
+                          ),),
+                        ),
+                      )
                     ],
                   ),
                 ],
@@ -128,33 +132,24 @@ class _SignInState extends State<SignIn> {
                             fontSize: 16,
                             fontWeight: FontWeight.w500),
                       ),
-                      Text(
-                        "Register",
-                        style: TextStyle(
-                            color: AppColors().lightColor,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16),
+                      GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                duration: const Duration(milliseconds: 600),
+                                child: const Register())),
+                        child: Text(
+                          "Register.",
+                          style: TextStyle(
+                              color: AppColors().lightColor,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16),
+                        ),
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 30.0),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: AppColors().secondaryColor,
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 120.0,right: 120,top: 20,bottom: 20),
-                          child: Text(
-                            'Sign In',
-                            style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: AppColors().greyText),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  LongButton(nameButton: 'Sign In')
                 ],
               ),
             ],

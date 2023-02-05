@@ -7,4 +7,12 @@ class Strings{
   var signIn = "Let's sign you in.";
   var  welcome = "Welcome back.";
   var missed = "You've been missed!";
+
+  var signUp = "Happy to see you.";
+  var  hello = "Hello.";
+  var like = "Hope you like it!";
+
+  var otp = 'OTP just sent.';
+  var wait = 'Just wait for a while.';
+  var time = 'Your time is precious.';
 }

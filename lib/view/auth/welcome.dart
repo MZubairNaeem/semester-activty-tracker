@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:semester_tracker/resource/colors.dart';
 import 'package:semester_tracker/resource/strings.dart';
 import 'package:semester_tracker/view/auth/register.dart';
 import 'package:semester_tracker/view/auth/sign_in.dart';
-
 
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -13,10 +13,8 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColors().primaryColor,
       body: SafeArea(
@@ -24,7 +22,7 @@ class _WelcomeState extends State<Welcome> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.asset('assets/splashicon.png'),
+              Image.asset('assets/splash-icon.png'),
               Column(
                 children: [
                   Text(
@@ -34,7 +32,6 @@ class _WelcomeState extends State<Welcome> {
                         fontSize: 42,
                         color: AppColors().lightText),
                   ),
-
                   Text(
                     Strings().headingHalf2,
                     style: TextStyle(
@@ -60,36 +57,49 @@ class _WelcomeState extends State<Welcome> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Register()));
-                    },
+                    onTap: () => Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: const Register())),
                     child: Container(
-                      decoration:  const BoxDecoration(
-                          borderRadius: BorderRadius.only(topLeft:Radius.circular(10),bottomLeft: Radius.circular(10)),
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              bottomLeft: Radius.circular(10)),
                           color: Colors.white),
                       child: const Padding(
-                        padding: EdgeInsets.only(left: 40,right: 40,top: 20,bottom: 20),
+                        padding: EdgeInsets.only(
+                            left: 40, right: 40, top: 20, bottom: 20),
                         child: Text(
                           'Register',
-                          style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                   ),
-
                   GestureDetector(
-                    onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignIn()));
-                    },
+                    onTap: () => Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            child: const SignIn())),
                     child: Container(
-                      decoration:  BoxDecoration(
-                          borderRadius: const BorderRadius.only(topRight:Radius.circular(10),bottomRight: Radius.circular(10)),
+                      decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(10),
+                              bottomRight: Radius.circular(10)),
                           color: AppColors().secondaryColor),
-                      child:  Padding(
-                        padding: const EdgeInsets.only(left: 50,right: 50,top: 20,bottom: 20),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 50, right: 50, top: 20, bottom: 20),
                         child: Text(
                           'Sign In',
-                          style: TextStyle(fontSize: 18,color: AppColors().greyText,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: AppColors().greyText,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
