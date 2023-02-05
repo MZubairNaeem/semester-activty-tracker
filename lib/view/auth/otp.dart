@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:semester_tracker/view/auth/sign_in.dart';
 
@@ -35,41 +36,42 @@ class _OTPVerifyState extends State<OTPVerify> {
                   children: [
                     Column(
                       children: [
-                        Heading(text: Strings().otp, fontWeight: FontWeight.bold,),
-                        Heading(text: Strings().wait, fontWeight: FontWeight.normal,),
-                        Heading(text: Strings().time, fontWeight: FontWeight.normal,),
+                        Heading(
+                          text: Strings().otp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        Heading(
+                          text: Strings().wait,
+                          fontWeight: FontWeight.normal,
+                        ),
+                        Heading(
+                          text: Strings().time,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ],
                     ),
                     const SizedBox(height: 70),
-                    TextField(
-                      style: TextStyle(color: AppColors().lightText),
-                      cursorColor: AppColors().lightColor,
-                      cursorWidth: 5,
-                      //cursorHeight: 25,
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColors().secondaryColor,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          focusedErrorBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.red,
-                              width: 2.0,
-                            ),
-                          ),
-                          border: const OutlineInputBorder(
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(10))),
-                          hintText: 'Mobile number',
-                          hintStyle: TextStyle(
-                              color: AppColors().lightText, fontSize: 18)),
+                    OtpTextField(
+                      textStyle: TextStyle(color: AppColors().lightText),
+                      numberOfFields: 5,
+                      enabledBorderColor: AppColors().secondaryColor,
+                      focusedBorderColor: AppColors().lightText,
+                      borderColor: AppColors().lightText,
+                      //set to true to show as box or false to show as dash
+                      showFieldAsBox: true,
+                      //runs when a code is typed in
+                      onCodeChanged: (String code) {
+                        //handle validation or checks here
+                      },
+                      //runs when every textfield is filled
+                      onSubmit: (String verificationCode) {
+                        setState(() {
+
+                        });
+                      }, // end onSubmit
                     ),
                   ],
                 ),
-
                 Column(
                   children: [
                     Row(
@@ -83,13 +85,12 @@ class _OTPVerifyState extends State<OTPVerify> {
                               fontWeight: FontWeight.w500),
                         ),
                         GestureDetector(
-                          onTap: () =>
-                              Navigator.push(
-                                  context,
-                                  PageTransition(
-                                      type: PageTransitionType.fade,
-                                      duration: const Duration(milliseconds: 600),
-                                      child: const SignIn())),
+                          onTap: () => Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  duration: const Duration(milliseconds: 600),
+                                  child: const SignIn())),
                           child: Text(
                             "Send again.",
                             style: TextStyle(
