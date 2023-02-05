@@ -14,5 +14,9 @@ class Strings{
 
   var otp = 'OTP just sent.';
   var wait = 'Just wait for a while.';
-  var time = 'Your time is precious.';
+  var time = 'Your time is precious!';
+
+  var itsOkay = "Its okay!";
+  var forgetPassword = 'If you forget.';
+  var recoverIt = 'We will recover it.';
 }

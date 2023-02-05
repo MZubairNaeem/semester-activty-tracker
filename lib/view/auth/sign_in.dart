@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:semester_tracker/resource/colors.dart';
 import 'package:semester_tracker/resource/strings.dart';
+import 'package:semester_tracker/view/auth/fogertPass.dart';
 import 'package:semester_tracker/view/auth/register.dart';
 import 'package:semester_tracker/widget/heading32.dart';
 import 'package:semester_tracker/widget/long_button.dart';
@@ -105,15 +106,23 @@ class _SignInState extends State<SignIn> {
                             hintStyle: TextStyle(
                                 color: AppColors().lightText, fontSize: 18)),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10.0,right: 10.0),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Text('Forget Password',style: TextStyle(
-                            color: AppColors().lightText,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold
-                          ),),
+                      GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                duration: const Duration(milliseconds: 600),
+                                child: const ForgetPass())),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 10.0,right: 10.0),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text('Forget Password',style: TextStyle(
+                              color: AppColors().lightText,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold
+                            ),),
+                          ),
                         ),
                       )
                     ],
