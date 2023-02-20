@@ -3,15 +3,18 @@ import 'package:flutter/material.dart';
 import '../resource/colors.dart';
 
 class LongButton extends StatelessWidget {
-  String nameButton;
-  LongButton({Key? key, required this.nameButton}) : super(key: key);
+  final String nameButton;
+  final GestureTapCallback? onPressed;
+  const LongButton({Key? key, required this.nameButton ,required this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 30.0),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () async {
+          onPressed;
+        },
         child: Container(
           width: double.maxFinite,
           height: 55,

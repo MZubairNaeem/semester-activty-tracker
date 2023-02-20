@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:semester_tracker/resource/colors.dart';
 import 'package:semester_tracker/resource/strings.dart';
-import 'package:semester_tracker/view/auth/fogertPass.dart';
+import 'package:semester_tracker/view/auth/fogert_pass.dart';
 import 'package:semester_tracker/view/auth/register.dart';
-import 'package:semester_tracker/widget/heading32.dart';
+import 'package:semester_tracker/widget/heading_32.dart';
 import 'package:semester_tracker/widget/long_button.dart';
 
 class SignIn extends StatefulWidget {
@@ -71,7 +71,7 @@ class _SignInState extends State<SignIn> {
                             border: const OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
-                            hintText: 'Mobile number',
+                            hintText: 'Email',
                             hintStyle: TextStyle(
                                 color: AppColors().lightText, fontSize: 18)),
                       ),
@@ -158,7 +158,7 @@ class _SignInState extends State<SignIn> {
                       ),
                     ],
                   ),
-                  LongButton(nameButton: 'Sign In')
+                  const LongButton(nameButton: 'Sign In', onPressed:  null,)
                 ],
               ),
             ],

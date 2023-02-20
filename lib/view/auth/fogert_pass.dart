@@ -4,7 +4,7 @@ import 'package:semester_tracker/view/auth/sign_in.dart';
 
 import '../../resource/colors.dart';
 import '../../resource/strings.dart';
-import '../../widget/heading32.dart';
+import '../../widget/heading_32.dart';
 import '../../widget/long_button.dart';
 
 class ForgetPass extends StatefulWidget {
@@ -102,7 +102,7 @@ class _ForgetPassState extends State<ForgetPass> {
                         ),
                       ],
                     ),
-                    LongButton(nameButton: 'Recover')
+                    const LongButton(nameButton: 'Recover',onPressed: null,)
                   ],
                 ),
               ],
