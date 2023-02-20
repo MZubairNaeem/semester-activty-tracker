@@ -4,7 +4,6 @@ import 'package:semester_tracker/resource/colors.dart';
 import 'package:semester_tracker/resource/strings.dart';
 import 'package:semester_tracker/view/auth/register.dart';
 import 'package:semester_tracker/view/auth/sign_in.dart';
-import 'package:sizer/sizer.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -60,7 +59,7 @@ class _WelcomeState extends State<Welcome> {
                       color: AppColors().greyText),
                 ),
                 SizedBox(
-                  height: screenHeight * 0.05,
+                  height: screenHeight * 0.1,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -72,19 +71,18 @@ class _WelcomeState extends State<Welcome> {
                               type: PageTransitionType.leftToRight,
                               child: const Register())),
                       child: Container(
+                        alignment: Alignment.center,
+                        height: screenHeight * 0.075,
+                        width: screenWidth * 0.32,
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(10),
                                 bottomLeft: Radius.circular(10)),
                             color: Colors.white),
-                        child: const Padding(
-                          padding: EdgeInsets.only(
-                              left: 40, right: 40, top: 20, bottom: 20),
-                          child: Text(
-                            'Register',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
+                        child:  Text(
+                          'Register',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -95,21 +93,22 @@ class _WelcomeState extends State<Welcome> {
                               type: PageTransitionType.rightToLeft,
                               child: const SignIn())),
                       child: Container(
+                        alignment: Alignment.center,
+                        height: screenHeight * 0.075,
+                        width: screenWidth * 0.32,
                         decoration: BoxDecoration(
                             borderRadius: const BorderRadius.only(
                                 topRight: Radius.circular(10),
                                 bottomRight: Radius.circular(10)),
                             color: AppColors().secondaryColor),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 50, right: 50, top: 20, bottom: 20),
-                          child: Text(
-                            'Sign In',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: AppColors().greyText,
-                                fontWeight: FontWeight.bold),
-                          ),
+                        child: Text(
+
+                          'Sign In',
+
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: AppColors().greyText,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
