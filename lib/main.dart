@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:semester_tracker/resource/colors.dart';
+import 'package:semester_tracker/view/Home/home.dart';
 import 'package:semester_tracker/view/auth/welcome.dart';
 import 'firebase_options.dart';
 
@@ -26,10 +27,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily:  GoogleFonts.rubik().fontFamily,
-        primaryColor: AppColors().greyText,
-        primarySwatch: Colors.grey
+        //primaryColor: AppColors().greyText,
+
       ),
-      home: const Welcome(
+      home: const Home(
       ),
     );
   }

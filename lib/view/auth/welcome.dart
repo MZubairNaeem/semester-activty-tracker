@@ -68,6 +68,7 @@ class _WelcomeState extends State<Welcome> {
                       onTap: () => Navigator.push(
                           context,
                           PageTransition(
+
                               type: PageTransitionType.leftToRight,
                               child: const Register())),
                       child: Container(
@@ -79,7 +80,7 @@ class _WelcomeState extends State<Welcome> {
                                 topLeft: Radius.circular(10),
                                 bottomLeft: Radius.circular(10)),
                             color: Colors.white),
-                        child:  Text(
+                        child:  const Text(
                           'Register',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
@@ -90,6 +91,7 @@ class _WelcomeState extends State<Welcome> {
                       onTap: () => Navigator.push(
                           context,
                           PageTransition(
+
                               type: PageTransitionType.rightToLeft,
                               child: const SignIn())),
                       child: Container(
