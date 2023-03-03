@@ -14,16 +14,16 @@ class AppBanner{
 
 //sample data
 List<AppBanner> appBannerList =[
-  AppBanner(1, 'Title', 'https://picsum.photos/seed/picsum/200/300'),
-  AppBanner(2, 'Title', 'https://picsum.photos/seed/picsum/200/300'),
-  AppBanner(3, 'Title', 'https://picsum.photos/seed/picsum/200/300'),
-  AppBanner(4, 'Title', 'https://picsum.photos/seed/picsum/200/300'),
+  AppBanner(1,"Your Semesters", 'assets/semester.png'),
+  AppBanner(2, 'Courses', 'assets/course.png'),
+  AppBanner(3, 'Attendance', 'assets/attendance.png'),
+  AppBanner(4, 'Overall Report', 'assets/report.png'),
 
 ];
 
 List<Widget> screens = [
   const Semester(),
-  const Attendance(),
   const Course(),
+  const Attendance(),
   const Report(),
 ];

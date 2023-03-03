@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:semester_tracker/view/Home/home_screen_nav/attendance.dart';
-import 'package:semester_tracker/view/Home/home_screen_nav/course.dart';
-import 'package:semester_tracker/view/Home/home_screen_nav/report.dart';
-import 'package:semester_tracker/view/Home/home_screen_nav/semester.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../resource/colors.dart';
 import '../../widget/appBanner.dart';
 import '../../widget/bannerItem.dart';
@@ -164,7 +157,7 @@ class _HomeState extends State<Home> {
       backgroundColor: AppColors().primaryColor,
       appBar: AppBar(
         backgroundColor: AppColors().secondaryColor,
-        title: const Text('Semester Tracker'),
+        title: const Text('Semester Activity Tracker'),
         centerTitle: true,
         elevation: 0,
       ),

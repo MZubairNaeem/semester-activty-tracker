@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:semester_tracker/resource/colors.dart';
 import 'appBanner.dart';
 
 class BannerItem extends StatelessWidget {
@@ -9,13 +10,15 @@ class BannerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        image: DecorationImage(
-            image: AssetImage('assets/splash-icon.png'),
-            fit: BoxFit.cover),
+        // image: DecorationImage(
+        //     image: AssetImage(appBanner.thumbNailUrl),
+        //     fit: BoxFit.cover),
       ),
       child: DefaultTextStyle(
           style:
@@ -29,18 +32,21 @@ class BannerItem extends StatelessWidget {
               ),
               Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      'Your Semesters',
+                    SizedBox(
+                      child: Image.asset(appBanner.thumbNailUrl,fit:BoxFit.cover,),
                     ),
                     SizedBox(
-                      width: 200,
+                      width: 200
+                      ,
                       child: Text(
-                        appBanner.title.toUpperCase(),
+                        appBanner.title,
                         textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold,color: AppColors().lightColor),
                       ),
-                    )
+                    ),
+
                   ],
                 ),
               )

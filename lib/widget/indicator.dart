@@ -14,7 +14,7 @@ class Indicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       margin: const EdgeInsets.symmetric(horizontal: 3.0),
-      width: isActive ? 32.0 : 14.0,
+      width: isActive ? 36.0 : 14.0,
       height: 14.0,
       decoration: BoxDecoration(
           color: isActive ? AppColors().lightColor : AppColors().lightText,
