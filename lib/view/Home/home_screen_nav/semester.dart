@@ -15,10 +15,20 @@ class _SemesterState extends State<Semester> {
       backgroundColor: AppColors().primaryColor,
       appBar: AppBar(
         backgroundColor: AppColors().secondaryColor,
-        title: Text('Semester'),
-      ),body: Center(
-      child: Text("semester",style: TextStyle(color: AppColors().lightColor ),),
-    ),
+        title: const Text('Semester'),
+      ),
+      body: Center(
+        child: Text(
+          "semester",
+          style: TextStyle(color: AppColors().lightColor),
+        ),
+      ) ,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: const Text("Add Semester"),
+        icon: const Icon(Icons.add_box),
+        backgroundColor: AppColors().lightColor,
+      ),
     );
   }
 }

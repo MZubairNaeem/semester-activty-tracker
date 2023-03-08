@@ -27,10 +27,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily:  GoogleFonts.rubik().fontFamily,
-        //primaryColor: AppColors().greyText,
 
       ),
-      home: const Home(
+      home: const Welcome(
       ),
     );
   }
