@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:semester_tracker/resource/colors.dart';
 import 'package:semester_tracker/resource/strings.dart';
 import 'package:semester_tracker/view/auth/register.dart';
 import 'package:semester_tracker/view/auth/sign_in.dart';
 
-class Welcome extends StatefulWidget {
+class Welcome extends ConsumerWidget{
   const Welcome({Key? key}) : super(key: key);
 
   @override
-  State<Welcome> createState() => _WelcomeState();
-}
-
-class _WelcomeState extends State<Welcome> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
+   // final data = ref.watch(fireBaseAuthProvider);
+    // final _auth = ref.watch(authenticationProvider);
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(

@@ -21,7 +21,7 @@ class _RegisterState extends State<Register> {
   final _password = TextEditingController();
   final username = TextEditingController();
   bool isLoading = false;
-
+  final GlobalKey<FormState> _formKey = GlobalKey();
   Future _delay() async{
     setState((){
       isLoading = false;
@@ -70,6 +70,7 @@ class _RegisterState extends State<Register> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
+        key: _formKey,
         backgroundColor: AppColors().primaryColor,
         appBar: AppBar(
           iconTheme: IconThemeData(color: AppColors().lightText),
@@ -97,7 +98,7 @@ class _RegisterState extends State<Register> {
                   TextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter you number';
+                        return 'Please enter your name';
                       }
                       return null;
                     },
@@ -133,10 +134,11 @@ class _RegisterState extends State<Register> {
                   ),
                   TextFormField(
                     validator: (value){
-                      if(value == null || value.isEmpty){
-                        return 'Please Enter Email';
-                      }else if (!value.contains('@')){
-                        return 'Please Enter Valid Email';
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your email';
+                      }
+                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                        return 'Please enter a valid email';
                       }
                       return null;
                     },
@@ -171,10 +173,11 @@ class _RegisterState extends State<Register> {
                   ),
                   TextFormField(
                     validator: (value){
-                      if(value == null || value.isEmpty ){
-                        return 'Please Enter Email';
-                      }else if (value.length >= 6){
-                        return 'Password must be greater than 6';
+                      if (value!.isEmpty) {
+                        return 'Please enter your password';
+                      }
+                      if (value.length < 6) {
+                        return 'Password should be at least 6 characters long';
                       }
                       return null;
                     },
@@ -241,7 +244,9 @@ class _RegisterState extends State<Register> {
                   ),
                   GestureDetector(
                     onTap: ()  {
-                       signUp();
+                      if (_formKey.currentState!.validate()) {
+                        signUp();
+                      }
                     },
                     child: Container(
                       width: double.maxFinite,
