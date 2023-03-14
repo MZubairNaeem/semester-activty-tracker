@@ -1,12 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:semester_tracker/controller/auth_method.dart';
 import 'package:semester_tracker/resource/colors.dart';
 import 'package:semester_tracker/view/auth/sign_in.dart';
-import 'package:semester_tracker/view/auth/welcome.dart';
 import 'package:semester_tracker/widget/heading_32.dart';
-import 'package:semester_tracker/widget/long_button.dart';
 
 import '../../resource/strings.dart';
 import '../Home/home.dart';
@@ -24,7 +22,40 @@ class _RegisterState extends State<Register> {
   final username = TextEditingController();
   bool isLoading = false;
 
+  Future _delay() async{
+    setState((){
+      isLoading = false;
+    });
+  }
 
+  signUp() async {
+    setState(() {
+      isLoading = true;
+      Future.delayed(const Duration(seconds: 3), _delay);
+    });
+    var res = await Authentication().signUpWithEmailAndPassword(_email.text, _password.text, context);
+    if(res != 'success'){
+      setState(() {
+        isLoading = true;
+        Future.delayed(const Duration(seconds: 10), _delay);
+      });
+    }else{
+      setState(() {
+        isLoading = true;
+        Future.delayed(const Duration(seconds: 10), _delay);
+      });
+      Fluttertoast.showToast(
+          msg: "Sign up successfully",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          textColor: AppColors().primaryColor,
+          backgroundColor: AppColors().lightColor,
+          fontSize: 16.0
+      );
+    }
+
+  }
   @override
   void dispose() {
     super.dispose();
@@ -63,13 +94,20 @@ class _RegisterState extends State<Register> {
                     fontWeight: FontWeight.normal,
                   ),
                   SizedBox(height: screenHeight * 0.1),
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter you number';
+                      }
+                      return null;
+                    },
                     style: TextStyle(color: AppColors().lightText),
                     cursorColor: AppColors().lightColor,
                     cursorWidth: 5,
                     //cursorHeight: 25,
                     controller: username,
-                    decoration: InputDecoration(
+                    decoration: InputDecoration (
+                      focusColor: AppColors().secondaryColor,
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: AppColors().secondaryColor,
@@ -93,8 +131,15 @@ class _RegisterState extends State<Register> {
                   SizedBox(
                     height: screenHeight * 0.02,
                   ),
-                  TextField(
-
+                  TextFormField(
+                    validator: (value){
+                      if(value == null || value.isEmpty){
+                        return 'Please Enter Email';
+                      }else if (!value.contains('@')){
+                        return 'Please Enter Valid Email';
+                      }
+                      return null;
+                    },
                     style: TextStyle(color: AppColors().lightText),
                     cursorColor: AppColors().lightColor,
                     cursorWidth: 5,
@@ -124,7 +169,15 @@ class _RegisterState extends State<Register> {
                   SizedBox(
                     height: screenHeight * 0.02,
                   ),
-                  TextField(
+                  TextFormField(
+                    validator: (value){
+                      if(value == null || value.isEmpty ){
+                        return 'Please Enter Email';
+                      }else if (value.length >= 6){
+                        return 'Password must be greater than 6';
+                      }
+                      return null;
+                    },
                     obscureText: true,
                     style: TextStyle(color: AppColors().lightText),
                     cursorColor: AppColors().lightColor,
@@ -187,8 +240,8 @@ class _RegisterState extends State<Register> {
                     height: screenHeight * 0.02,
                   ),
                   GestureDetector(
-                    onTap: () async {
-
+                    onTap: ()  {
+                       signUp();
                     },
                     child: Container(
                       width: double.maxFinite,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:semester_tracker/resource/colors.dart';
 import 'package:semester_tracker/view/auth/auth_checker.dart';
 import 'package:semester_tracker/view/exception/error.dart';
 import 'package:semester_tracker/view/exception/loading.dart';
@@ -34,7 +35,6 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily:  GoogleFonts.rubik().fontFamily,
-
       ),
       home: initialize.when(
           data: (data) {

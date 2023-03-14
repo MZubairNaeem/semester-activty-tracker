@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../resource/colors.dart';
 
@@ -56,25 +57,34 @@ class Authentication {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      await showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          title: Text('Error Occured'),
-          content: Text(e.toString()),
-          actions: [
-            TextButton(
-                onPressed: () {
-                  Navigator.of(ctx).pop();
-                },
-                child: Text("OK"))
-          ],
-        ),
+      Fluttertoast.showToast(
+          msg: e.toString(),
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          textColor: AppColors().primaryColor,
+          backgroundColor: AppColors().lightColor,
+          fontSize: 16.0
       );
+      // await showDialog(
+      //   context: context,
+      //   builder: (ctx) => AlertDialog(
+      //     title: Text('Error Occured'),
+      //     content: Text(e.toString()),
+      //     actions: [
+      //       TextButton(
+      //           onPressed: () {
+      //             Navigator.of(ctx).pop();
+      //           },
+      //           child: Text("OK"))
+      //     ],
+      //   ),
+      // );
     }
   }
 
   // SignUp the user using Email and Password
-  Future<void> signUpWithEmailAndPassword(
+  Future signUpWithEmailAndPassword(
       String email, String password, BuildContext context) async {
     try {
       _auth.createUserWithEmailAndPassword(
@@ -85,14 +95,14 @@ class Authentication {
       await showDialog(
           context: context,
           builder: (ctx) => AlertDialog(
-              title: Text('Error Occured'),
+              title: const Text('Error Occured'),
               content: Text(e.toString()),
               actions: [
                 TextButton(
                     onPressed: () {
                       Navigator.of(ctx).pop();
                     },
-                    child: Text("OK"))
+                    child: const Text("OK"))
               ]));
     } catch (e) {
       if (e == 'email-already-in-use') {
